@@ -1,0 +1,1217 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Epimethé | Maroquinerie d'exception</title>
+  <meta name="description" content="Portefeuilles en cuir végétal italien, façonnés à la main. Précommande ouverte.">
+  <meta property="og:title" content="Epimethé | Maroquinerie d'exception">
+  <meta property="og:description" content="Cuir végétal toscan. Façonné à la main. Précommande ouverte.">
+  <meta property="og:type" content="website">
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap');
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      /* Dark luxury palette - charcoal with forest undertone */
+      --bg:           #0C1210;
+      --bg-2:         #121918;
+      --bg-3:         #181F1C;
+      --accent:       #C4863A;
+      --accent-dim:   rgba(196, 134, 58, 0.11);
+      --accent-border:rgba(196, 134, 58, 0.28);
+      --text:         #EDE8DE;
+      --text-2:       #9B9489;
+      --text-3:       #635D56;
+      --border:       rgba(237, 232, 222, 0.07);
+
+      /* Light section (preorder only) */
+      --light-bg:     #F0EBE1;
+      --light-text:   #16120E;
+      --light-text-2: #5C5248;
+      --light-border: rgba(22, 18, 14, 0.1);
+
+      --font-display: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+      --font-body:    'DM Sans', system-ui, -apple-system, sans-serif;
+      --max-w:        1280px;
+    }
+
+    html {
+      font-size: 16px;
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-weight: 300;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ─── Utility ─── */
+    .container {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 2.5rem;
+    }
+
+    /* ─── Navigation ─── */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      height: 68px;
+      display: flex;
+      align-items: center;
+      padding: 0 2.5rem;
+      transition: background 0.45s ease, border-color 0.45s ease;
+      border-bottom: 1px solid transparent;
+    }
+
+    .nav.scrolled {
+      background: rgba(12, 18, 16, 0.88);
+      backdrop-filter: blur(18px) saturate(1.4);
+      -webkit-backdrop-filter: blur(18px) saturate(1.4);
+      border-color: var(--border);
+    }
+
+    .nav-inner {
+      width: 100%;
+      max-width: var(--max-w);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      font-family: var(--font-display);
+      font-size: 1.1875rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      color: var(--text);
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: color 0.25s;
+    }
+
+    .nav-logo:hover { color: var(--accent); }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2.25rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-2);
+      text-decoration: none;
+      transition: color 0.25s;
+    }
+
+    .nav-links a:hover { color: var(--text); }
+
+    .nav-cta {
+      color: var(--accent) !important;
+      border: 1px solid var(--accent-border);
+      padding: 0.45rem 1.125rem;
+      transition: background 0.25s, border-color 0.25s !important;
+    }
+
+    .nav-cta:hover {
+      background: var(--accent-dim) !important;
+      border-color: var(--accent) !important;
+      color: var(--accent) !important;
+    }
+
+    /* ─── Hero ─── */
+    .hero {
+      min-height: 100dvh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-text {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 5.5rem 3rem 4rem 2.5rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-text-inner {
+      max-width: 500px;
+      margin-left: auto;
+    }
+
+    .hero-h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 4vw, 3.75rem);
+      font-weight: 400;
+      line-height: 1.12;
+      color: var(--text);
+      margin-bottom: 1.75rem;
+    }
+
+    .hero-h1 em {
+      font-style: italic;
+      color: var(--accent);
+      line-height: 1.15;
+      padding-bottom: 2px;
+      display: inline-block;
+    }
+
+    .hero-sub {
+      font-size: 0.9375rem;
+      line-height: 1.8;
+      color: var(--text-2);
+      margin-bottom: 2.5rem;
+      max-width: 36ch;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 1.75rem;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      height: 48px;
+      padding: 0 1.875rem;
+      background: var(--accent);
+      color: #0C1210;
+      font-family: var(--font-body);
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: opacity 0.25s, transform 0.2s;
+    }
+
+    .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
+    .btn-primary:active { transform: scale(0.98); }
+
+    .btn-secondary {
+      font-size: 0.8125rem;
+      color: var(--text-3);
+      text-decoration: none;
+      letter-spacing: 0.06em;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 2px;
+      white-space: nowrap;
+      transition: color 0.25s, border-color 0.25s;
+    }
+
+    .btn-secondary:hover {
+      color: var(--text-2);
+      border-color: var(--text-3);
+    }
+
+    .hero-visual {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      filter: brightness(0.62) contrast(1.08) saturate(0.85);
+      display: block;
+    }
+
+    .hero-visual-gradient {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, var(--bg) 0%, rgba(12,18,16,0) 28%),
+                  linear-gradient(180deg, transparent 60%, rgba(12,18,16,0.35) 100%);
+    }
+
+    /* ─── Manifesto ─── */
+    .manifesto {
+      padding: 6rem 2.5rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .manifesto-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .manifesto-aside {
+      padding-top: 0.5rem;
+    }
+
+    .manifesto-aside-line {
+      width: 28px;
+      height: 1px;
+      background: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    .manifesto-aside-label {
+      font-size: 0.6875rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-3);
+      line-height: 1.8;
+    }
+
+    .manifesto-quote {
+      font-family: var(--font-display);
+      font-size: clamp(1.5rem, 2.4vw, 2.125rem);
+      font-weight: 300;
+      line-height: 1.58;
+      color: var(--text);
+    }
+
+    .manifesto-quote em {
+      font-style: italic;
+      color: var(--accent);
+      padding-bottom: 1px;
+      display: inline-block;
+    }
+
+    /* ─── Matière ─── */
+    .matiere {
+      border-top: 1px solid var(--border);
+    }
+
+    .matiere-visual {
+      width: 100%;
+      height: 54vh;
+      min-height: 320px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .matiere-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 60%;
+      filter: brightness(0.48) saturate(0.7) contrast(1.1);
+      transform: scale(1.03);
+      transition: transform 7s ease;
+    }
+
+    .matiere-visual:hover img {
+      transform: scale(1.0);
+    }
+
+    .matiere-visual-text {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 2.5rem;
+      font-family: var(--font-display);
+      font-size: clamp(1.625rem, 3vw, 2.5rem);
+      font-weight: 300;
+      color: var(--text);
+      line-height: 1.25;
+      max-width: 18ch;
+    }
+
+    .matiere-visual-text em {
+      font-style: italic;
+      display: block;
+    }
+
+    .matiere-specs {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border-top: 1px solid var(--border);
+    }
+
+    .spec-item {
+      padding: 2.5rem 2rem 2.5rem 2.5rem;
+      border-right: 1px solid var(--border);
+    }
+
+    .spec-item:last-child {
+      border-right: none;
+    }
+
+    .spec-label {
+      font-size: 0.6875rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-3);
+      margin-bottom: 0.625rem;
+    }
+
+    .spec-value {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 400;
+      color: var(--text);
+      line-height: 1.3;
+    }
+
+    .spec-note {
+      font-size: 0.75rem;
+      color: var(--text-3);
+      margin-top: 0.3rem;
+      line-height: 1.5;
+    }
+
+    /* ─── Collection ─── */
+    .collection {
+      padding: 7rem 2.5rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .collection-header {
+      max-width: var(--max-w);
+      margin: 0 auto 4rem;
+    }
+
+    .collection-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.875rem, 3vw, 2.75rem);
+      font-weight: 400;
+      color: var(--text);
+    }
+
+    .collection-grid {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 3px;
+    }
+
+    .product {
+      position: relative;
+    }
+
+    .product-img-wrap {
+      overflow: hidden;
+      aspect-ratio: 4/5;
+      position: relative;
+    }
+
+    .product-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.6) contrast(1.06) saturate(0.78);
+      transition: transform 0.85s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                  filter 0.5s ease;
+      display: block;
+    }
+
+    .product:hover .product-img-wrap img {
+      transform: scale(1.04);
+      filter: brightness(0.72) contrast(1.06) saturate(0.85);
+    }
+
+    .product-info {
+      padding: 1.625rem 0 1rem;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+
+    .product-name {
+      font-family: var(--font-display);
+      font-size: 1.375rem;
+      font-weight: 400;
+      color: var(--text);
+      display: block;
+      margin-bottom: 0.375rem;
+    }
+
+    .product-desc {
+      font-size: 0.8125rem;
+      color: var(--text-2);
+      line-height: 1.65;
+      max-width: 38ch;
+    }
+
+    .product-badge {
+      font-size: 0.625rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      border: 1px solid var(--accent-border);
+      padding: 0.3rem 0.7rem;
+      white-space: nowrap;
+      flex-shrink: 0;
+      margin-top: 0.25rem;
+    }
+
+    /* ─── Patine (horizontal editorial) ─── */
+    .patine {
+      background: var(--bg-2);
+      border-top: 1px solid var(--border);
+      padding: 7rem 0 0;
+    }
+
+    .patine-statement {
+      padding: 0 2.5rem 5rem;
+      max-width: var(--max-w);
+      margin: 0 auto;
+    }
+
+    .patine-statement-text {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 3.5vw, 3.25rem);
+      font-weight: 300;
+      line-height: 1.22;
+      color: var(--text);
+      max-width: 22ch;
+    }
+
+    .patine-statement-text em {
+      font-style: italic;
+      color: var(--accent);
+      padding-bottom: 2px;
+      display: inline-block;
+    }
+
+    .patine-visual-band {
+      width: 100%;
+      height: 42vh;
+      min-height: 260px;
+      overflow: hidden;
+    }
+
+    .patine-visual-band img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 40%;
+      filter: brightness(0.5) saturate(0.65) contrast(1.1);
+      display: block;
+    }
+
+    .patine-steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-top: 1px solid var(--border);
+    }
+
+    .patine-step {
+      padding: 2.75rem 2.5rem;
+      border-right: 1px solid var(--border);
+      position: relative;
+    }
+
+    .patine-step:last-child {
+      border-right: none;
+    }
+
+    .patine-step-period {
+      font-family: var(--font-display);
+      font-size: 2.625rem;
+      font-weight: 300;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .patine-step-body {
+      font-size: 0.875rem;
+      color: var(--text-2);
+      line-height: 1.7;
+    }
+
+    /* ─── Précommande (light section, ONE intentional theme switch) ─── */
+    .preorder {
+      background: var(--light-bg);
+      padding: 8rem 2.5rem;
+      color: var(--light-text);
+    }
+
+    .preorder-inner {
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    .preorder-eyebrow {
+      font-size: 0.6875rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #8B7355;
+      display: block;
+      margin-bottom: 1.375rem;
+    }
+
+    .preorder-heading {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      font-weight: 400;
+      line-height: 1.15;
+      color: var(--light-text);
+      margin-bottom: 1.375rem;
+    }
+
+    .preorder-body {
+      font-size: 0.9375rem;
+      line-height: 1.8;
+      color: var(--light-text-2);
+      margin-bottom: 3rem;
+      max-width: 52ch;
+    }
+
+    /* Form */
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0 2rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin-bottom: 1.875rem;
+    }
+
+    .form-group.full {
+      grid-column: 1 / -1;
+    }
+
+    .form-label {
+      font-size: 0.6875rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--light-text-2);
+      font-family: var(--font-body);
+      font-weight: 400;
+    }
+
+    .form-input,
+    .form-select {
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid var(--light-border);
+      padding: 0.75rem 0;
+      font-family: var(--font-body);
+      font-size: 0.9375rem;
+      font-weight: 300;
+      color: var(--light-text);
+      outline: none;
+      transition: border-color 0.25s;
+      -webkit-appearance: none;
+      appearance: none;
+      width: 100%;
+    }
+
+    .form-input::placeholder {
+      color: rgba(92, 82, 72, 0.4);
+    }
+
+    .form-input:focus,
+    .form-select:focus {
+      border-color: #8B7355;
+    }
+
+    .form-select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='11' height='6' fill='none'%3E%3Cpath d='M1 1l4.5 4L10 1' stroke='%238B7355' stroke-width='1.25' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 2px center;
+      padding-right: 1.25rem;
+      cursor: pointer;
+    }
+
+    .form-select option {
+      background: var(--light-bg);
+      color: var(--light-text);
+    }
+
+    .form-submit {
+      grid-column: 1 / -1;
+      width: 100%;
+      height: 52px;
+      background: var(--light-text);
+      color: var(--light-bg);
+      border: none;
+      font-family: var(--font-body);
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: opacity 0.25s, transform 0.2s;
+      margin-top: 0.25rem;
+    }
+
+    .form-submit:hover { opacity: 0.82; transform: translateY(-1px); }
+    .form-submit:active { transform: scale(0.985); opacity: 1; }
+    .form-submit:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+    .form-note {
+      font-size: 0.8125rem;
+      color: #8B7355;
+      line-height: 1.7;
+      margin-top: 1.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--light-border);
+    }
+
+    .form-success {
+      display: none;
+      font-size: 0.9375rem;
+      color: var(--light-text-2);
+      line-height: 1.75;
+      padding: 2rem;
+      border: 1px solid var(--light-border);
+      margin-top: 1rem;
+      font-style: italic;
+      font-family: var(--font-display);
+    }
+
+    /* ─── Footer ─── */
+    .footer {
+      padding: 3.5rem 2.5rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .footer-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+
+    .footer-brand {
+      font-family: var(--font-display);
+      font-size: 1.0625rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text);
+    }
+
+    .footer-brand small {
+      display: block;
+      font-family: var(--font-body);
+      font-size: 0.625rem;
+      font-weight: 300;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-3);
+      margin-top: 0.3rem;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .footer-links a {
+      font-size: 0.6875rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-3);
+      text-decoration: none;
+      transition: color 0.25s;
+    }
+
+    .footer-links a:hover { color: var(--text-2); }
+
+    .footer-copy {
+      font-size: 0.6875rem;
+      color: var(--text-3);
+      text-align: right;
+      line-height: 1.7;
+    }
+
+    /* ─── Scroll reveal ─── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    .reveal-d1 { transition-delay: 0.1s; }
+    .reveal-d2 { transition-delay: 0.22s; }
+    .reveal-d3 { transition-delay: 0.34s; }
+
+    /* ─── Mobile ─── */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-visual {
+        height: 60vw;
+        min-height: 260px;
+        order: -1;
+      }
+
+      .hero-visual-gradient {
+        background: linear-gradient(180deg, transparent 40%, var(--bg) 100%);
+      }
+
+      .hero-text {
+        padding: 2rem 1.5rem 4rem;
+      }
+
+      .hero-text-inner {
+        max-width: 100%;
+        margin: 0;
+      }
+
+      .manifesto {
+        padding: 4rem 1.5rem;
+      }
+
+      .manifesto-inner {
+        grid-template-columns: 1fr;
+        gap: 1.75rem;
+      }
+
+      .matiere-visual { height: 52vw; min-height: 220px; }
+      .matiere-visual-text { left: 1.5rem; bottom: 1.5rem; }
+
+      .matiere-specs {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .spec-item {
+        padding: 1.75rem 1.5rem;
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .spec-item:nth-child(odd) {
+        border-right: 1px solid var(--border);
+      }
+
+      .spec-item:nth-last-child(-n+2) {
+        border-bottom: none;
+      }
+
+      .collection { padding: 4rem 1.5rem; }
+
+      .collection-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+
+      .patine { padding: 4.5rem 0 0; }
+      .patine-statement { padding: 0 1.5rem 3.5rem; }
+
+      .patine-steps {
+        grid-template-columns: 1fr;
+      }
+
+      .patine-step {
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .patine-step:last-child {
+        border-bottom: none;
+      }
+
+      .patine-step { padding: 2rem 1.5rem; }
+
+      .preorder { padding: 5rem 1.5rem; }
+
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .form-group.full { grid-column: 1; }
+
+      .footer { padding: 3rem 1.5rem; }
+
+      .footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.75rem;
+      }
+
+      .footer-copy { text-align: left; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ─── Navigation ─── -->
+  <nav class="nav" id="nav" aria-label="Navigation principale">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo" aria-label="Epimethé - retour à l'accueil">Epimethé</a>
+      <ul class="nav-links">
+        <li><a href="#collection">Collection</a></li>
+        <li><a href="#matieres">Matières</a></li>
+        <li><a href="#preorder" class="nav-cta">Précommander</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ─── Hero ─── -->
+  <section class="hero" aria-labelledby="hero-heading">
+    <div class="hero-text">
+      <div class="hero-text-inner">
+        <h1 class="hero-h1" id="hero-heading">
+          Façonné pour durer.<br>
+          <em>Taillé pour s'embellir.</em>
+        </h1>
+        <p class="hero-sub">
+          Cuir végétal toscan tanné au chêne. Assemblé à la main, conçu pour développer une patine unique avec le temps.
+        </p>
+        <div class="hero-actions">
+          <a href="#preorder" class="btn-primary">Précommander</a>
+          <a href="#collection" class="btn-secondary">Voir la collection</a>
+        </div>
+      </div>
+    </div>
+    <div class="hero-visual" aria-hidden="true">
+      <img
+        src="https://picsum.photos/seed/leather-hand-craft-dark/900/1100"
+        alt="Portefeuille Epimethé en cuir végétal naturel"
+        width="900"
+        height="1100"
+        loading="eager"
+        fetchpriority="high"
+      >
+      <div class="hero-visual-gradient"></div>
+    </div>
+  </section>
+
+  <!-- ─── Manifeste ─── -->
+  <section class="manifesto" aria-label="Notre approche">
+    <div class="manifesto-inner reveal">
+      <div class="manifesto-aside">
+        <div class="manifesto-aside-line"></div>
+        <p class="manifesto-aside-label">Beaune, France<br>Depuis 2024</p>
+      </div>
+      <p class="manifesto-quote">
+        Nous fabriquons peu. Chaque portefeuille est assemblé sur commande, point par point. Pas de stock. Pas de soldes. Une seule promesse : une pièce qui <em>gagne en caractère</em> à chaque année passée dans votre poche.
+      </p>
+    </div>
+  </section>
+
+  <!-- ─── Matières ─── -->
+  <section id="matieres" aria-labelledby="matieres-heading">
+    <div class="matiere">
+      <div class="matiere-visual">
+        <img
+          src="https://picsum.photos/seed/tannery-hides-leather-tuscany/1600/700"
+          alt="Peaux de cuir végétal dans une tannerie toscane"
+          width="1600"
+          height="700"
+          loading="lazy"
+        >
+        <p class="matiere-visual-text" id="matieres-heading" aria-hidden="false">
+          Cuir végétal<br>
+          <em>tanné au chêne.</em>
+        </p>
+      </div>
+      <div class="matiere-specs">
+        <div class="spec-item reveal">
+          <p class="spec-label">Origine</p>
+          <p class="spec-value">Toscane</p>
+          <p class="spec-note">Consorzio Vera Pelle Italiana Conciata al Vegetale</p>
+        </div>
+        <div class="spec-item reveal reveal-d1">
+          <p class="spec-label">Tannage</p>
+          <p class="spec-value">Végétal au chêne</p>
+          <p class="spec-note">Sans chrome, sans métaux lourds</p>
+        </div>
+        <div class="spec-item reveal reveal-d2">
+          <p class="spec-label">Épaisseur</p>
+          <p class="spec-value">1,8 - 2,2 mm</p>
+          <p class="spec-note">Sélection à la main par pièce</p>
+        </div>
+        <div class="spec-item reveal reveal-d3">
+          <p class="spec-label">Fil de couture</p>
+          <p class="spec-value">Coton ciré</p>
+          <p class="spec-note">Point sellier, technique Lepage</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Collection ─── -->
+  <section class="collection" id="collection" aria-labelledby="collection-heading">
+    <div class="collection-header">
+      <h2 class="collection-title" id="collection-heading">La collection</h2>
+    </div>
+    <div class="collection-grid">
+
+      <article class="product reveal">
+        <div class="product-img-wrap">
+          <img
+            src="https://picsum.photos/seed/bifold-wallet-dark-leather/700/875"
+            alt="Le Bifold - portefeuille deux volets en cuir végétal naturel"
+            width="700"
+            height="875"
+            loading="lazy"
+          >
+        </div>
+        <div class="product-info">
+          <div>
+            <span class="product-name">Le Bifold</span>
+            <p class="product-desc">Deux volets, six fentes, un soufflet billet. La forme classique, découpée dans un seul morceau de cuir.</p>
+          </div>
+          <span class="product-badge">Précommande</span>
+        </div>
+      </article>
+
+      <article class="product reveal reveal-d2">
+        <div class="product-img-wrap">
+          <img
+            src="https://picsum.photos/seed/slim-cardholder-minimal-leather-dark/700/875"
+            alt="Le Slim - porte-cartes minimaliste en cuir végétal"
+            width="700"
+            height="875"
+            loading="lazy"
+          >
+        </div>
+        <div class="product-info">
+          <div>
+            <span class="product-name">Le Slim</span>
+            <p class="product-desc">Quatre cartes, une poche billet. Minimaliste, sans compromis sur la solidité ou la longévité.</p>
+          </div>
+          <span class="product-badge">Précommande</span>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ─── Patine (horizontal editorial layout) ─── -->
+  <section class="patine" aria-labelledby="patine-heading">
+    <div class="patine-statement">
+      <p class="patine-statement-text reveal" id="patine-heading">
+        Il ne s'use pas.<br>
+        <em>Il se forge un caractère.</em>
+      </p>
+    </div>
+    <div class="patine-visual-band" aria-hidden="true">
+      <img
+        src="https://picsum.photos/seed/aged-leather-patina-worn-time/1600/500"
+        alt="Cuir végétal après plusieurs années de port"
+        width="1600"
+        height="500"
+        loading="lazy"
+      >
+    </div>
+    <div class="patine-steps">
+      <div class="patine-step reveal">
+        <span class="patine-step-period">6 mois</span>
+        <p class="patine-step-body">Le cuir s'assouplit. Les plis de poche commencent à imprimer leur relief sur la pièce. La surface prend une première brillance aux zones de contact.</p>
+      </div>
+      <div class="patine-step reveal reveal-d1">
+        <span class="patine-step-period">1 an</span>
+        <p class="patine-step-body">La couleur s'intensifie. Les tons naturels du cuir se réveillent sous l'effet de la chaleur du corps et de la lumière du quotidien.</p>
+      </div>
+      <div class="patine-step reveal reveal-d2">
+        <span class="patine-step-period">5 ans</span>
+        <p class="patine-step-body">La patine est unique. La pièce a acquis une profondeur et une personnalité qui lui appartiennent, impossibles a imiter par quelque procede industriel.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Précommande (intentional light theme switch) ─── -->
+  <section class="preorder" id="preorder" aria-labelledby="preorder-heading">
+    <div class="preorder-inner">
+      <span class="preorder-eyebrow">Précommande</span>
+      <h2 class="preorder-heading" id="preorder-heading">Réservez votre exemplaire.</h2>
+      <p class="preorder-body">
+        Epimethé fonctionne sur commande. Nous ne produisons que ce qui est réservé - pour ne rien gaspiller, et pour que chaque pièce reçoive l'attention qu'elle mérite. En vous inscrivant, vous réservez votre place dans la prochaine session de fabrication.
+      </p>
+
+      <form id="preorder-form" novalidate>
+        <div class="form-grid">
+
+          <div class="form-group">
+            <label class="form-label" for="prenom">Prénom</label>
+            <input class="form-input" type="text" id="prenom" name="prenom"
+              placeholder="Jean" required autocomplete="given-name">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="nom">Nom</label>
+            <input class="form-input" type="text" id="nom" name="nom"
+              placeholder="Durand" required autocomplete="family-name">
+          </div>
+
+          <div class="form-group full">
+            <label class="form-label" for="email">Adresse e-mail</label>
+            <input class="form-input" type="email" id="email" name="email"
+              placeholder="jean@exemple.fr" required autocomplete="email">
+          </div>
+
+          <div class="form-group full">
+            <label class="form-label" for="modele">Modèle souhaité</label>
+            <select class="form-select" id="modele" name="modele" required>
+              <option value="" disabled selected>Choisir un modèle</option>
+              <option value="bifold">Le Bifold</option>
+              <option value="slim">Le Slim</option>
+              <option value="les-deux">Les deux</option>
+            </select>
+          </div>
+
+          <div class="form-group full">
+            <label class="form-label" for="message">Message (facultatif)</label>
+            <input class="form-input" type="text" id="message" name="message"
+              placeholder="Questions, personnalisation souhaitée...">
+          </div>
+
+          <button type="submit" class="form-submit" id="form-btn">
+            Soumettre ma précommande
+          </button>
+
+        </div>
+
+        <div class="form-success" id="form-success" role="status" aria-live="polite">
+          Merci. Votre précommande a bien été enregistrée. Vous recevrez un e-mail de confirmation dans les prochaines heures avec les détails sur les tarifs et les délais de fabrication.
+        </div>
+
+        <p class="form-note">
+          Aucun prélèvement n'est effectué à l'inscription. Vous serez contacté par e-mail pour confirmer votre commande et choisir votre coloris.
+        </p>
+      </form>
+    </div>
+  </section>
+
+  <!-- ─── Footer ─── -->
+  <footer class="footer" aria-label="Pied de page">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        Epimethé
+        <small>Maroquinerie d'exception</small>
+      </div>
+      <nav aria-label="Liens du pied de page">
+        <ul class="footer-links">
+          <li><a href="#collection">Collection</a></li>
+          <li><a href="#matieres">Matières</a></li>
+          <li><a href="#preorder">Précommande</a></li>
+          <li><a href="mailto:contact@epimethe.fr">Contact</a></li>
+        </ul>
+      </nav>
+      <p class="footer-copy">
+        &copy; 2025 Epimethé<br>Fait en France
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    // Nav scroll glass effect via IntersectionObserver (no scroll listener)
+    const nav = document.getElementById('nav');
+    const heroSentinel = document.createElement('div');
+    heroSentinel.style.cssText = 'position:absolute;top:80px;left:0;width:1px;height:1px;pointer-events:none;';
+    document.querySelector('.hero').prepend(heroSentinel);
+
+    new IntersectionObserver(
+      ([entry]) => nav.classList.toggle('scrolled', !entry.isIntersecting),
+      { threshold: 0 }
+    ).observe(heroSentinel);
+
+    // Scroll reveal via IntersectionObserver
+    const revealEls = document.querySelectorAll('.reveal');
+
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+
+      revealEls.forEach(el => io.observe(el));
+    } else {
+      // Fallback for old browsers
+      revealEls.forEach(el => el.classList.add('visible'));
+    }
+
+    // Form submission
+    const form = document.getElementById('preorder-form');
+    const btn = document.getElementById('form-btn');
+    const success = document.getElementById('form-success');
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      // Basic validation
+      const required = form.querySelectorAll('[required]');
+      let valid = true;
+      required.forEach(field => {
+        if (!field.value.trim()) {
+          field.style.borderColor = 'rgba(160, 60, 40, 0.5)';
+          valid = false;
+        } else {
+          field.style.borderColor = '';
+        }
+      });
+
+      if (!valid) return;
+
+      btn.disabled = true;
+      btn.textContent = 'Envoi en cours...';
+
+      // Simulate async submission
+      setTimeout(() => {
+        btn.style.display = 'none';
+        success.style.display = 'block';
+      }, 900);
+    });
+  </script>
+
+</body>
+</html>
