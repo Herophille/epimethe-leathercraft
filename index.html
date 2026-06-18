@@ -1196,7 +1196,7 @@
     }
 
     // Form submission — Formspree
-    const FORMSPREE_ID = 'YOUR_FORM_ID'; // replace with your Formspree form ID
+    const FORMSPREE_ID = 'mjgdqaje';
 
     const form = document.getElementById('preorder-form');
     const btn = document.getElementById('form-btn');
@@ -1221,7 +1221,7 @@
       errorEl.style.display = 'none';
 
       try {
-        const response = await fetch(`https://formspree.io/f/${mjgdqaje}`, {
+        const response = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
           method: 'POST',
           headers: { 'Accept': 'application/json' },
           body: new FormData(form),
